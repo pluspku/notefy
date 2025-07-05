@@ -1,0 +1,39 @@
+{
+  "name": "notefy",
+  "version": "1.0.0",
+  "description": "五线谱音符识别小游戏 - Musical Note Recognition Game for Children",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "dev": "npx live-server --port=8000 --open=/",
+    "build": "echo 'Static site - no build needed'",
+    "test": "echo 'No tests specified yet'"
+  },
+  "keywords": [
+    "music",
+    "education",
+    "game",
+    "children",
+    "musical-notes",
+    "staff",
+    "treble-clef",
+    "learning"
+  ],
+  "author": "Notefy Team",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/notefy.git"
+  },
+  "homepage": "https://yourusername.github.io/notefy",
+  "bugs": {
+    "url": "https://github.com/yourusername/notefy/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

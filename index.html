@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notefy - 五线谱音符识别小游戏</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header -->
+        <header class="game-header">
+            <h1 class="game-title">🎵 Notefy</h1>
+            <p class="game-subtitle">五线谱音符识别小游戏</p>
+        </header>
+
+        <!-- Main Menu -->
+        <div class="main-menu" id="mainMenu">
+            <div class="menu-card">
+                <h2>选择游戏模式</h2>
+                <div class="game-modes">
+                    <button class="mode-btn" data-mode="practice">
+                        <span class="mode-icon">📚</span>
+                        <span class="mode-name">练习模式</span>
+                        <span class="mode-desc">无时间限制，专注学习</span>
+                    </button>
+                    <button class="mode-btn" data-mode="challenge">
+                        <span class="mode-icon">⚡</span>
+                        <span class="mode-name">挑战模式</span>
+                        <span class="mode-desc">限时答题，增加乐趣</span>
+                    </button>
+                    <button class="mode-btn" data-mode="review">
+                        <span class="mode-icon">🔄</span>
+                        <span class="mode-name">复习模式</span>
+                        <span class="mode-desc">重点练习错误音符</span>
+                    </button>
+                </div>
+                
+                <div class="difficulty-selection">
+                    <h3>选择难度</h3>
+                    <div class="difficulty-buttons">
+                        <button class="difficulty-btn active" data-difficulty="beginner">
+                            <span class="diff-icon">🌟</span>
+                            <span class="diff-name">初级</span>
+                            <span class="diff-desc">C4-C5</span>
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="intermediate">
+                            <span class="diff-icon">⭐</span>
+                            <span class="diff-name">中级</span>
+                            <span class="diff-desc">C3-C6</span>
+                        </button>
+                        <button class="difficulty-btn" data-difficulty="advanced">
+                            <span class="diff-icon">🌟</span>
+                            <span class="diff-name">高级</span>
+                            <span class="diff-desc">全音域</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Area -->
+        <div class="game-area" id="gameArea" style="display: none;">
+            <!-- Game Info -->
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="info-label">得分:</span>
+                    <span class="info-value" id="score">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">连续答对:</span>
+                    <span class="info-value" id="streak">0</span>
+                </div>
+                <div class="info-item" id="timerItem" style="display: none;">
+                    <span class="info-label">时间:</span>
+                    <span class="info-value" id="timer">30</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">题目:</span>
+                    <span class="info-value"><span id="currentQuestion">1</span>/<span id="totalQuestions">10</span></span>
+                </div>
+            </div>
+
+            <!-- Staff Container -->
+            <div class="staff-container">
+                <svg id="staffSvg" width="400" height="200" viewBox="0 0 400 200">
+                    <!-- Staff lines will be drawn here -->
+                </svg>
+            </div>
+
+            <!-- Answer Buttons -->
+            <div class="answer-buttons">
+                <button class="answer-btn" data-note="C">C</button>
+                <button class="answer-btn" data-note="D">D</button>
+                <button class="answer-btn" data-note="E">E</button>
+                <button class="answer-btn" data-note="F">F</button>
+                <button class="answer-btn" data-note="G">G</button>
+                <button class="answer-btn" data-note="A">A</button>
+                <button class="answer-btn" data-note="B">B</button>
+            </div>
+
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <button class="control-btn" id="pauseBtn">暂停</button>
+                <button class="control-btn" id="skipBtn">跳过</button>
+                <button class="control-btn" id="backToMenuBtn">返回菜单</button>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div class="results-screen" id="resultsScreen" style="display: none;">
+            <div class="results-card">
+                <h2>游戏结束！</h2>
+                <div class="final-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">最终得分:</span>
+                        <span class="stat-value" id="finalScore">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">正确率:</span>
+                        <span class="stat-value" id="accuracy">0%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">最长连击:</span>
+                        <span class="stat-value" id="maxStreak">0</span>
+                    </div>
+                </div>
+                <div class="results-actions">
+                    <button class="action-btn" id="playAgainBtn">再玩一次</button>
+                    <button class="action-btn" id="mainMenuBtn">返回主菜单</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Modal -->
+        <div class="feedback-modal" id="feedbackModal">
+            <div class="feedback-content">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div class="feedback-text" id="feedbackText"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
